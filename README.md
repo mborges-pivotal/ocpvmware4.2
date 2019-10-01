@@ -83,13 +83,13 @@ chmod +x /usr/local/bin/govc
 	* Refer to the [URL](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.html.hostclient.doc/GUID-67415625-FB59-4AE0-9E16-4FB39AEBC50B.html) VMware reference document for instruction on creating a portgroup.
 
 #### Update NTP server ESXi
-Connect to your ESXi host via vSphere host client  https://<ESXI_IP>/ui
+* Connect to your ESXi host via vSphere host client  https://<ESXI_IP>/ui
 
-Then on the left, just bellow the host, select the Manage > System > Time and Date
+* Then on the left, just bellow the host, select the Manage > System > Time and Date
 
-Update the NTP Server with correct NTP Server address for example 129.6.15.28,129.6.15.28
+* Update the NTP Server with correct NTP Server address for example 129.6.15.28,129.6.15.28
 
-Then click the Edit Settings button to bring up the configuration window. Set the NTP service startup policy as “Start and stop with host”. Like this everytime the host will reboot, the NTP service will be started automatically.
+* Then click the Edit Settings button to bring up the configuration window. Set the NTP service startup policy as “Start and stop with host”. Like this everytime the host will reboot, the NTP service will be started automatically.
 
 #### Download the Git repository
 ```
@@ -102,9 +102,9 @@ cd /opt/ocpvmware
 > Under the [defaults]
 >interpreter_python = /opt/rh/python27/root/usr/bin/python
 
-Edit the [vars.yaml](./vars.yaml) file with the IP addresss that will be assigned to the masters/workers/boostrap. The IP addresses need to be right since they will be used to create your OpenShift servers.
+* Edit the [vars.yaml](./vars.yaml) file with the IP addresss that will be assigned to the masters/workers/boostrap. The IP addresses need to be right since they will be used to create your OpenShift servers.
 
-Edit the [hosts](./hosts) file kvmguest section to match helper node information. This should be similar to vars.yaml file 
+* Edit the [hosts](./hosts) file kvmguest section to match helper node information. This should be similar to vars.yaml file 
 
 
 ## Running the playbooks
