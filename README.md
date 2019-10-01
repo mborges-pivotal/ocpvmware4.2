@@ -59,11 +59,16 @@ chmod +x /usr/local/bin/govc
 ```
 
 > ***HINT*** for Redhat server pip install command wil fail
+
 >>  subscription-manager repos --enable rhel-server-rhscl-7-rpms
+
 >>  yum install python27-python-pip
->>$ scl enable python27 bash
->>$ which pip
->>$ pip -V
+
+>> scl enable python27 bash
+
+>> which pip
+
+>> pip -V
 
 #### Download vCenter Server Appliance 
 * Download the ISO images from [URL](https://my.vmware.com/web/vmware/details?downloadGroup=VC67U2&productId=742&rPId=33237)
