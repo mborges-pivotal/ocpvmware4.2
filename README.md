@@ -71,11 +71,11 @@ chmod +x /usr/local/bin/govc
 >$ pip -V
 
 #### Download vCenter Server Appliance 
-Download the ISO images from [URL](https://my.vmware.com/web/vmware/details?downloadGroup=VC67U2&productId=742&rPId=33237)
+* Download the ISO images from [URL](https://my.vmware.com/web/vmware/details?downloadGroup=VC67U2&productId=742&rPId=33237)
 
-move it to /opt/repo
+* move it to /opt/repo
 
-Later in the step where vars.yaml is to be modified, update the vcenter_iso_name variable in vars.yaml with the downloaded ISO image name
+* Later in the step where vars.yaml is to be modified, update the vcenter_iso_name variable in vars.yaml with the downloaded ISO image name
 
 
 #### Create a Portgroup VMware
