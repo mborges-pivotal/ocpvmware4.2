@@ -18,7 +18,7 @@ The Centos/Redhat VSI is only required for a few hours and can de-provisioned af
 > The extra four IP addresses are for having a cushion.  This installation provisioned the vCenter on the same portable IP subnet, thus a total of 9 IP addresses are used.
 
 ## 	Architecture Diagram 
-![OCP 4.1 Architect on IC4G](images/ocp_vmware_architecture.png){:height="50%" width="50%"}
+![OCP 4.1 Architect on IC4G](images/ocp_vmware_architecture.png | width=100)
 
 ## Hardware requirements
 
