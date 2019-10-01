@@ -35,12 +35,14 @@ coming soon!!!!!!!!!!!!!!!!!
 
 ## Prep the VIS System 
 
+- Provision a VSI with 2 vCPUs, 10 GB of RAM, and 100 GB of storage
+
 - Install Required Packages.
 
 - Download vCenter ISO image from VMware. (VMware website requires an account to download the ISO image)
 
 #### Install Packages 
-Before we can use ansible scripts, we have to prep the host with installing ansible rpm and python library. 
+After the VSI is provisioned, logon to the VSI as root. To run ansible scripts, ansible rpm and python library need to be installed: 
 
 ```
 sudo yum update
@@ -72,12 +74,14 @@ chmod +x /usr/local/bin/govc
 Download the ISO images from [URL](https://my.vmware.com/web/vmware/details?downloadGroup=VC67U2&productId=742&rPId=33237)
 
 move it to /opt/repo
-Update the vcsa_ova variable in vars.yaml file with the downloaded ISO image name.
+
+Later in the step where vars.yaml is to be modified, update the vcenter_iso_name variable in vars.yaml with the downloaded ISO image name
+
 
 #### Create a Portgroup VMware
 Name = vmportgroup
 
-You can follow [URL](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.html.hostclient.doc/GUID-67415625-FB59-4AE0-9E16-4FB39AEBC50B.html) VMware reference document to create a portgroup. 
+Refer to the [URL](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.html.hostclient.doc/GUID-67415625-FB59-4AE0-9E16-4FB39AEBC50B.html) VMware reference document for instruction on creating a portgroup.
 
 #### Update NTP server ESXi
 Connect to your ESXi host via vSphere host client  https://<ESXI_IP>/ui
@@ -106,22 +110,21 @@ Edit the [hosts](./hosts) file kvmguest section to match helper node information
 
 ## Running the playbooks
 
-End-User can deploy the entire stack from vCenter to OCP4.1  using playbook 1, 2, and 3. In case you already have Vcenter deployed you can skip the playbook 1. 
+Running playbook 1, 2 and 3 will deploy the entire stack from vCenter to OCP v4.1. If vCenter already exist, skip playbook one and continue with playbook two. 
 
 
 
 ### Run the playbook One
 
-Run the playbook to setup your vCenter 
+Run the following playbook to setup vCenter: 
 
 ```
 ansible-playbook -e @vars.yaml  play1.yaml
 
 ``` 
->  **HINT** After complete deployment wait for 15-30 mins to let the vCenter deploy. Verify vCenter by visting https://<vcenter_ip> URL and default username Administrator@vshere.local  before executing playbook 2.
->   You can also watch the vCenter install progress by opening a browser and enter following URL https://<vCenter_IP>:5480
+> **HINT** After play1.yaml is completed, wait 15-30 mins to let the vCenter completes its deployment. Before proceeding to playbook 2, verify that vCenter has completed deployment by visiting  https://<vcenter_ip> and logon using the credential entered in the vars.yaml file.
 
-> You can check the status by visting https://<vcenter_ip>:5480
+> The vCenter installation progress can be monitored by opening a browser and entering the following URL  https://<vCenter_IP>:5480
 
 
 ### Run the playbook Two
@@ -138,7 +141,8 @@ ansible-playbook -e @vars.yaml  play2.yaml
 
 ### Run the playbook Three
 
-Run the playbook 3  updates the helper node  which acts as LB/DSN/DHCP/PEX. This playbook will also restart the OCP VM's
+Playbook 3 will update the helper node to act as Load Balancer/ Dynamic Host Configuration Protocol / Preboot Execution Environment / Domain Name System (LB/DHCP/PEX/DNS). This playbook will also restart the OCP VM's
+
 
 ```
 ansible-playbook -e @vars.yaml  play3.yaml
@@ -152,15 +156,15 @@ If the ansible scripts fail you can execute the following script to clean the en
 ansible-playbook -e @vars.yaml  clean_ocp_vms.yaml
 ```
 
-> **HINT** this will delete all the  OCP related VM's and you execute Play2 and Play3 playbook
+> **HINT** The above command will delete all the OCP related VM's.  Execute Play2 and Play3 playbooks to resume OCP installation.
 
 ```
 ansible-playbook -e @vars.yaml  clean_everything.yaml
 ```
 
-> **HINT** this will delete all the VM's and you execute Play1, Play2 and Play3 playbook
+> **HINT** The above command will delete the vCenter and all the OCP  related VMs. Execute Play1, Play2 and Play3 playbook to resume OCP  installation.
 
-## Wait for install
+## Wait for OCP 4.1 install
 
 The boostrap VM actually does the install for you; you can track it with the following command by ssh into helper node guest KVM.
 
@@ -183,9 +187,9 @@ INFO It is now safe to remove the bootstrap resources
 
 ...you can continue....at this point you can delete the bootstrap server.
 
-## Finish Install
+## Finish OCP Installation
 
-First, ssh into helper node guest KVM
+ssh into the helper node . Execute the following commands:
 
 ```
 cd /opt/ocp4
@@ -208,7 +212,7 @@ finish up the install process
 ```
 openshift-install wait-for install-complete 
 ```
-Following message should be shown 
+When messages similar to the following message are displayed, that means the installation is completed. 
 ```
 INFO Waiting up to 30m0s for the cluster at https://api.test.os.fisc.lab:6443 to initialize... 
 INFO Waiting up to 10m0s for the openshift-console route to be created... 
