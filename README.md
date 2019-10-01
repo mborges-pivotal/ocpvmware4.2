@@ -122,7 +122,6 @@ ansible-playbook -e @vars.yaml  play1.yaml
 
 ``` 
 > **HINT** After play1.yaml is completed, wait 15-30 mins to let the vCenter completes its deployment. Before proceeding to playbook 2, verify that vCenter has completed deployment by visiting  https://<vcenter_ip> and logon using the credential entered in the vars.yaml file.
-
 >> The vCenter installation progress can be monitored by opening a browser and entering the following URL  https://<vCenter_IP>:5480
 
 
