@@ -79,9 +79,8 @@ chmod +x /usr/local/bin/govc
 
 
 #### Create a Portgroup VMware
-Name = vmportgroup
-
-Refer to the [URL](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.html.hostclient.doc/GUID-67415625-FB59-4AE0-9E16-4FB39AEBC50B.html) VMware reference document for instruction on creating a portgroup.
+* Name = vmportgroup
+	* Refer to the [URL](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.html.hostclient.doc/GUID-67415625-FB59-4AE0-9E16-4FB39AEBC50B.html) VMware reference document for instruction on creating a portgroup.
 
 #### Update NTP server ESXi
 Connect to your ESXi host via vSphere host client  https://<ESXI_IP>/ui
