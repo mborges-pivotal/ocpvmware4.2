@@ -24,6 +24,7 @@ The Centos/Redhat VSI is only required for a few hours and can de-provisioned af
 
 | Node Name       | vCPU   | Mem  | HDD | Role
 | ------          | ------ |----  | --- | ------ |
+| Bare metal Server | 48  | 256 | 1 TB |  ESXi Server|
 | Helper Node | 4  | 16 | 150 | DNS/Proxy/DHCP/OCP Installer|
 | Bootstrap-0 | 4  | 16 | 150 | Bootstrap OCP |
 | Control-plane-0  |  4 | 16 | 150 | Master OCP |
