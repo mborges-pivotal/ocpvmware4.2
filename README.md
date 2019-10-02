@@ -234,7 +234,7 @@ INFO To access the cluster as the system:admin user when using 'oc', run 'export
 INFO Access the OpenShift web-console here: https://console-openshift-console.apps.test.os.fisc.lab
 INFO Login to the console with user: kubeadmin, password: ###-????-@@@@-****
 ```
-> Make note of the OpenShieft web-console url, the console user ID and password.
+> Make note of the OpenShift web-console url, the console user ID and password.
 
 ## Access OCP URL
 Add following line to your /etc/hosts files on the server from where will allow access to your OpenShift URL:
