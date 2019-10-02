@@ -26,9 +26,8 @@ after the install is complete. The VSI is defined below.
 > IP address.  The recommended minimum of 16 portable IP addresses is determined by:
 > 1 helper node + 1 boot node + 3 control-plane nodes + 3 worker nodes = 8 nodes
 > IC4G reserves 4 IP addresses out of every portable IP subnet.  Therefore 8 + 4 = 12.
-> The extra four IP addresses are for having a cushion. The extra IP addresses are available
-> for additional worker nodes This installation provisioned the vCenter on the same 
-> portable IP subnet, thus a total of 9 IP addresses are used.
+> The extra IP addresses are available for additional worker nodes This installation 
+> provisioned the vCenter on the same portable IP subnet, thus a total of 9 IP addresses are used.
 
 ## 	Architecture Diagram
 ![OCP 4.1 Architect on IC4G](images/ocp_vmware_architecture.png)
