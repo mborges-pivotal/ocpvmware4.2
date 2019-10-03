@@ -142,8 +142,9 @@ ansible-playbook -e @vars.yaml  play2.yaml
 
 ```
 
-> **HINT** You will be prompted to press a key during Playbook 2 execution before the script continues,
-> this happens so the end-user can verify the helper VM is deployed successfully.
+> **HINT** You will be prompted to press the enter key during Playbook 2 execution before the script continues,
+> this happens so the end-user can verify the helper VM is deployed successfully.  The helper VM is deployed when the
+> helper VM console displays the login prompt.
 
 
 ### Run playbook Three
