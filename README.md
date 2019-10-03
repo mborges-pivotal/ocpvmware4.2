@@ -180,7 +180,7 @@ ansible-playbook -e @vars.yaml  clean_everything.yaml
 
 ## Wait for OCP 4.1 install
 
-The boostrap VM actually does the install for you; you can track it with the following command by ssh into helper node guest KVM.
+The boostrap VM actually does the install for you; you can track it with the following command by ssh into helper node.
 
 ```
 cd /opt/ocp4
