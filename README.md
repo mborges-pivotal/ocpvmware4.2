@@ -1,7 +1,7 @@
 # ocpvmware
 
 
-For deploying OCP 4.1  a minimum recommendation is to provision 1 ESXi server
+For deploying OCP 4.2  a minimum recommendation is to provision 1 ESXi server
 and 1 Centos/Redhat VSI on the same VLAN in IBM Cloud for Government. For this
 deployment we setup an ESXi Bare Metal server  with 48 CPU, 256 GB RAM, and 1 TB
 storage. Your mileage may vary based on your specific needs.
@@ -11,7 +11,7 @@ after the install is complete. The VSI is defined below.
 
 
 > **NOTE**  Openshift 4.2 has a complicated installation.  The official RedHat
-> documentation for installing Openshift 4.1 on VMware can be found here:
+> documentation for installing Openshift 4.2 on VMware can be found here:
 > [URL](https://docs.openshift.com/container-platform/4.2/installing/installing_vsphere/installing-vsphere.html)
 
 > The information in this document is a consolidated installation process to get
