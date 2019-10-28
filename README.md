@@ -95,7 +95,7 @@ chmod +x /usr/local/bin/govc
 
 * Then on the left, just bellow the host, select the Manage > System > Time and Date
 
-* Update the NTP Server with correct NTP Server address for example 129.6.15.28,129.6.15.28
+* Update the NTP Server with correct NTP Server address for example 129.6.15.28
 
 * Then click the Edit Settings button to bring up the configuration window. Set the NTP service startup policy as “Start and stop with host”. Like this everytime the host will reboot, the NTP service will be started automatically.
 
