@@ -10,13 +10,13 @@ The Centos/Redhat VSI is only required for a few hours and can de-provisioned
 after the install is complete. The VSI is defined below.
 
 
-> **NOTE**  Openshift 4.1 has a complicated installation.  The official RedHat
+> **NOTE**  Openshift 4.2 has a complicated installation.  The official RedHat
 > documentation for installing Openshift 4.1 on VMware can be found here:
-> [URL](https://docs.openshift.com/container-platform/4.1/installing/installing_vsphere/installing-vsphere.html)
+> [URL](https://docs.openshift.com/container-platform/4.2/installing/installing_vsphere/installing-vsphere.html)
 
 > The information in this document is a consolidated installation process to get
 > you up and running. For the full version and explanation, please refer here:
-> [URL](https://docs.openshift.com/container-platform/4.1/installing/installing_vsphere/installing-vsphere.html)
+> [URL](https://docs.openshift.com/container-platform/4.2/installing/installing_vsphere/installing-vsphere.html)
 
 > Before you begin, understanding your IP addresses is very important.  The IP
 > addresses used in this process and the configuration files came from our IC4G
