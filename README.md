@@ -102,7 +102,7 @@ chmod +x /usr/local/bin/govc
 #### Download the Git repository
 ```
 cd /opt
-git clone https://github.com/fctoibm/ocpvmware.git
+git clone https://github.com/fctoibm/ocpvmware4.2.git
 cd /opt/ocpvmware
 ```
 > *** HINT *** For Redhat you might have to update the ansible path if playbook can not load python modules
