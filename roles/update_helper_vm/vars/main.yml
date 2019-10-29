@@ -1,8 +1,8 @@
 ---
 # vars file for tester
 staticips: false
-ocp_bios: "https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.1/4.1.0/rhcos-4.1.0-x86_64-metal-bios.raw.gz"
-ocp_initramfs: "https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.1/4.1.0/rhcos-4.1.0-x86_64-installer-initramfs.img"
-ocp_install_kernel: "https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.1/4.1.0/rhcos-4.1.0-x86_64-installer-kernel"
-ocp_client: "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/{{openshift_build}}/openshift-client-linux-{{openshift_build}}.tar.gz"
-ocp_installer: "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/{{openshift_build}}/openshift-install-linux-{{openshift_build}}.tar.gz"
+ocp_bios: "{{v_rhcos_bios}}"
+ocp_initramfs: "{{v_rhcos_initramfs}}"
+ocp_install_kernel: "{{v_rhcos_install_kernel}}"
+ocp_client: "{{v_ocp_client}}"
+ocp_installer: "{{v_ocp_installer}}"
