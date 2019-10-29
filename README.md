@@ -103,7 +103,7 @@ chmod +x /usr/local/bin/govc
 ```
 cd /opt
 git clone https://github.com/fctoibm/ocpvmware4.2.git
-cd /opt/ocpvmware
+cd /opt/ocpvmware4.2
 ```
 > *** HINT *** For Redhat you might have to update the ansible path if playbook can not load python modules
 > In ansible.cfg
