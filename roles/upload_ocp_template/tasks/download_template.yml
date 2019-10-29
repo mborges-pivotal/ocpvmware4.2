@@ -14,7 +14,7 @@
       path: "{{ tmp_space }}/{{ ocp_ova }}"
     register: ova_install
 
-  - name: Download OCP4.1 installation ova file (might take a while)
+  - name: Download OCP4.2 installation ova file (might take a while)
     get_url:
       url: "{{ ocp_ova_url }}"
       dest: "{{ tmp_space }}/{{ ocp_ova }}"
