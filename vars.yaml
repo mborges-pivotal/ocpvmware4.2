@@ -67,7 +67,24 @@ worker_ip:
 
 
 # latest openshift build 
-openshift_build: "4.1.16"
+openshift_build: "4.2.0"
+
+##################################################################
+# The following are variables that are parameterized for OCP v4.2
+##################################################################
+
+# RHCOS build and url
+v_rhcos_ova: "rhcos-4.2.0-x86_64-vmware.ova"
+v_rhcos_ova_url: "https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.2/latest/{{ v_rhcos_ova  }}"
+v_rhcos_bios: "https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.2/latest/rhcos-4.2.0-x86_64-metal-bios.raw.gz"
+v_rhcos_initramfs: "https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.2/latest/rhcos-4.2.0-x86_64-installer-initramfs.img"
+v_rhcos_install_kernel: "https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.2/latest/rhcos-4.2.0-x86_64-installer-kernel"
+
+# OCP Installer
+v_ocp_client: "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux-{{openshift_build}}.tar.gz"
+v_ocp_installer: "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-install-linux-{{openshift_build}}.tar.gz"
+v_ocp_terraform: "https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linux_amd64.zip"
+
 
 
 ###############################################################################################################
@@ -79,8 +96,6 @@ helpernode_hostname: "helper"
 helper_node_image: "CentOS-7-x86_64-DVD-1908.iso"
 helper_node_image_url: "http://centos.mirror.ndchost.com/7.7.1908/isos/x86_64"
 helper_node_image_uncompressed_name: "{{ CentOS-7-x86_64-DVD-1908.iso }}"
-
-
 
 
 # Libvirt image directory
@@ -161,6 +176,5 @@ workers:
   - name: "compute-2"
     ipaddr: "{{ worker_ip.2 }}"
     macaddr: "{{ hostvars['localhost']['worker_mac_2'] }}"
-
 
 
