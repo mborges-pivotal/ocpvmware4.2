@@ -1,6 +1,6 @@
 ---
 # vars file for ocp_setup_tasks
 
-ocp_client: "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/{{openshift_build}}/openshift-client-linux-{{openshift_build}}.tar.gz"
-ocp_installer: "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/{{openshift_build}}/openshift-install-linux-{{openshift_build}}.tar.gz"
-ocp_terraform: "https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linux_amd64.zip"
+ocp_client: "{{v_ocp_client}}"
+ocp_installer: "{{v_ocp_installer}}"
+ocp_terraform: "{{v_ocp_terraform}}"
