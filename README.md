@@ -178,7 +178,7 @@ ansible-playbook -e @vars.yaml  clean_everything.yaml
 > You should then be able to execute Play1, Play2 and Play3 playbook to resume OCP installation.
 > ** Do not use this if you vCenter installation was successful and the vCenter is running properly.
 
-## Wait for OCP 4.1 install
+## Wait for OCP 4.2 install
 
 The boostrap VM actually does the install for you; you can track it with the following command by ssh into helper node.
 
