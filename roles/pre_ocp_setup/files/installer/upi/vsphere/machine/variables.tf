@@ -59,3 +59,10 @@ variable "ipam_token" {
 variable "ip_addresses" {
   type = "list"
 }
+variable "memory" {
+  type = "string"
+}
+
+variable "num_cpu" {
+  type = "string"
+}
