@@ -65,6 +65,7 @@ sudo yum install git
 sudo yum install python-pip gcc make openssl-devel python-devel python-requests
 sudo pip install --upgrade ansible
 sudo pip install PyVmomi
+sudo pip install pyVim
 sudo yum install p7zip*
 sudo pip install jmespath
 curl -L https://github.com/vmware/govmomi/releases/download/v0.20.0/govc_linux_amd64.gz | gunzip > /usr/local/bin/govc
