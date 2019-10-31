@@ -62,7 +62,7 @@ sudo yum update
 sudo yum install ansible
 sudo yum install genisoimage
 sudo yum install git
-sudo yum install python-pip gcc make openssl-devel python-devel
+sudo yum install python-pip gcc make openssl-devel python-devel python-requests
 sudo pip install --upgrade ansible
 sudo pip install PyVmomi
 sudo yum install p7zip*
