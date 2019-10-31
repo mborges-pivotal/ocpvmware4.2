@@ -27,14 +27,37 @@
 
 
 
+  - name: Add resource pool to vCenter for uploading OVA template 
+    vmware_resource_pool:
+     hostname: '{{ vcenter_ip }}'
+     username: '{{ vcenter_username }}'
+     password: '{{ vcenter_password }}'
+     datacenter: '{{ vcenter_datacenter }}'
+     cluster: '{{ vcenter_cluster }}'
+     resource_pool: ocp_ova_template_{{openshift_build}}
+     mem_shares: normal
+     mem_limit: -1
+     mem_reservation: 0
+     mem_expandable_reservations: yes
+     cpu_shares: normal
+     cpu_limit: -1
+     cpu_reservation: 0
+     cpu_expandable_reservations: yes
+     validate_certs: no
+     state: present
+    delegate_to: localhost
+   
+   
   - name: Upload OCP OVA file  "{{ ocp_ova  }}"
     command: govc import.ova -name=rhcos-latest "{{ tmp_space }}/{{ ocp_ova }}"
     environment:
       GOVC_USERNAME: "{{ govc_username | default(ansible_env.GOVC_USERNAME) }}"
       GOVC_PASSWORD: "{{ govc_password | default(ansible_env.GOVC_PASSWORD) }}"
       GOVC_URL: "{{ govc_url | default(ansible_env.GOVC_URL) }}"
+      GOVC_DATASTORE: "{{ govc_datastore | default(ansible_env.GOVC_DATASTORE) }}"
+      GOVC_CLUSTER: "{{ govc_cluster | default(ansible_env.GOVC_CLUSTER) }}"
       GOVC_INSECURE: 1
-
+      GOVC_RESOURCE_POOL: ocp_ova_template_{{openshift_build}}
   
 
   
