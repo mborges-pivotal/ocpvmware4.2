@@ -78,6 +78,9 @@ chmod +x /usr/local/bin/govc
 >> *  scl enable python27 bash
 >> *  which pip
 >> *  pip -V
+>> * cd /usr/bin
+>> * unlink python
+>> * ln -s /opt/rh/python27/root/usr/bin/python2.7 python
 
 #### Download the vCenter Server Appliance
 * Download the ISO images from [URL](https://my.vmware.com/web/vmware/details?downloadGroup=VC67U2&productId=742&rPId=33237)
