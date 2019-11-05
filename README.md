@@ -110,9 +110,9 @@ cd /opt
 git clone https://github.com/fctoibm/ocpvmware4.2.git
 cd /opt/ocpvmware4.2
 ```
-> *** HINT *** For Redhat you might have to update the ansible path if playbook can not load python modules
-> In ansible.cfg
-> Under the [defaults]
+> *** HINT *** For Redhat you might have to update the ansible path if playbook can not load python modules.
+> Edit the file /opt/ocpvmware4.2/In ansible.cfg.
+> Under the [defaults], add:  
 >interpreter_python = /opt/rh/python27/root/usr/bin/python
 
 * Edit the [vars.yaml](./vars.yaml) file with the IP addresss that will be assigned to the masters/workers/boostrap. The IP addresses need to be right since they will be used to create your OpenShift servers.
@@ -215,13 +215,13 @@ cd /opt/ocp4
 export KUBECONFIG=/opt/ocp4/auth/kubeconfig
 ```
 
-Set up storage for you registry (to use Persistent Volumes (PVs) follow the instructions here: [URL](https://docs.openshift.com/container-platform/4.1/installing/installing_bare_metal/installing-bare-metal.html#registry-configuring-storage-baremetal_installing-bare-metal) )
+You must configure storage for the image registry Operator.  For non-production clusters, you can set the image registry to an empty directory.  Execute the following command to set the registry to an empty directory. (To use Persistent Volumes (PVs) follow the instructions here: [URL](https://docs.openshift.com/container-platform/4.1/installing/installing_bare_metal/installing-bare-metal.html#registry-configuring-storage-baremetal_installing-bare-metal) )
 
 ```
 oc patch configs.imageregistry.operator.openshift.io cluster --type merge --patch '{"spec":{"storage":{"emptyDir":{}}}}'
 ```
 
-If you need to expose the registry, run this command
+If you have a need to gain external access to the image registry or to log in to the registry from outside the cluster, run the following command to expose the registry:
 
 ```
 oc patch configs.imageregistry.operator.openshift.io/cluster --type merge -p '{"spec":{"defaultRoute":true}}'
