@@ -1,5 +1,5 @@
-Installing OCP 4.2 using VMware
-===============================
+Installing OCP 4.2 with VMware
+==============================
 
 For deploying OCP 4.2, a minimum recommendation is to provision 1 ESXi server
 and 1 Centos/Redhat VSI on the same VLAN in IBM Cloud for Government. For this
