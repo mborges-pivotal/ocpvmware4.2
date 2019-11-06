@@ -1,16 +1,16 @@
 # ocpvmware
 
 
-For deploying OCP 4.2  a minimum recommendation is to provision 1 ESXi server
+For deploying OCP 4.2, a minimum recommendation is to provision 1 ESXi server
 and 1 Centos/Redhat VSI on the same VLAN in IBM Cloud for Government. For this
-deployment we setup an ESXi Bare Metal server  with 48 CPU, 256 GB RAM, and 1 TB
+deployment we setup an ESXi Bare Metal server with 48 CPU, 256 GB RAM, and 1 TB
 storage. Your mileage may vary based on your specific needs.
 
 The Centos/Redhat VSI is only required for a few hours and can de-provisioned
 after the install is complete. The VSI is defined below.
 
 
-> **NOTE**  Openshift 4.2 has a complicated installation.  The official RedHat
+> **NOTE:**  Openshift 4.2 has a complicated installation.  The official RedHat
 > documentation for installing Openshift 4.2 on VMware can be found here:
 > [URL](https://docs.openshift.com/container-platform/4.2/installing/installing_vsphere/installing-vsphere.html)
 
@@ -26,8 +26,8 @@ after the install is complete. The VSI is defined below.
 > IP address.  The recommended minimum of 16 portable IP addresses is determined by:
 > 1 helper node + 1 boot node + 3 control-plane nodes + 3 worker nodes = 8 nodes
 > IC4G reserves 4 IP addresses out of every portable IP subnet.  Therefore 8 + 4 = 12.
-> The extra IP addresses are available for additional worker nodes. This installation 
-> provisioned the vCenter on the same portable IP subnet, thus a total of 9 IP addresses 
+> The extra IP addresses are available for additional worker nodes. This installation
+> provisioned the vCenter on the same portable IP subnet, thus a total of 9 IP addresses
 > are used.  You should plan your ip address space accordingly.
 
 ## 	Architecture Diagram
@@ -55,7 +55,7 @@ after the install is complete. The VSI is defined below.
 - Download vCenter ISO image from VMware. (VMware website requires an account to download the ISO image)
 
 #### Install Packages
-After the VSI is provisioned, logon to the VSI as root. To run ansible scripts, ansible rpm and python library need to be installed:
+After the VSI is provisioned, logon to the VSI as root. To run ansible scripts, the ansible rpm and python library need to be installed:
 
 ```
 sudo yum update
@@ -73,7 +73,7 @@ curl -L https://github.com/vmware/govmomi/releases/download/v0.20.0/govc_linux_a
 chmod +x /usr/local/bin/govc
 ```
 
-> ***HINT*** the Redhat server pip install command will fail. When it does, execute the following commands:
+> **NOTE:** the Redhat server pip install command will fail. When it does, execute the following commands:
 >> * subscription-manager repos --enable rhel-server-rhscl-7-rpms
 >> * yum install python27-python-pip
 >> *  scl enable python27 bash
@@ -88,7 +88,7 @@ chmod +x /usr/local/bin/govc
 
 * move it to /opt/repo
 
-* Later in the step where vars.yaml is to be modified, update the vcenter_iso_name variable in vars.yaml with the downloaded ISO image name
+* Edit the vars.yaml file to update the vcenter_iso_name variable with the downloaded ISO image name
 
 
 #### Create a Portgroup in VMware
@@ -110,7 +110,7 @@ cd /opt
 git clone https://github.com/fctoibm/ocpvmware4.2.git
 cd /opt/ocpvmware4.2
 ```
-> *** HINT *** For Redhat you might have to update the ansible path if playbook can not load python modules.
+> **NOTE:** For Redhat, you might have to update the ansible path if playbook can not load python modules.
 > Edit the file /opt/ocpvmware4.2/In ansible.cfg.
 > Under the [defaults], add:  
 >interpreter_python = /opt/rh/python27/root/usr/bin/python
@@ -126,7 +126,7 @@ Running playbook 1, 2 and 3 will deploy the entire stack from vCenter to OCP v4.
 
 
 
-### Run playbook One
+### Run playbook 1
 
 Run the following playbook to setup vCenter:
 
@@ -134,11 +134,11 @@ Run the following playbook to setup vCenter:
 ansible-playbook -e @vars.yaml  play1.yaml
 
 ```
-> **HINT** After play1.yaml is completed, wait 15-30 mins to let the vCenter completes its deployment. Before proceeding to playbook 2, verify that vCenter has completed deployment by visiting  https://<vcenter_ip> and logon using the credential entered in the vars.yaml file.
+> **NOTE:** After play1.yaml is completed, wait 15-30 mins to let the vCenter completes its deployment. Before proceeding to playbook 2, verify that vCenter has completed deployment by visiting  https://<vcenter_ip> and logon using the credential entered in the vars.yaml file.
 >> The vCenter installation progress can be monitored by opening a browser and entering the following URL  https://<vCenter_IP>:5480
 
 
-### Run playbook Two
+### Run playbook 2
 
 Run the playbook 2 to deploy helper node OS and OCP4.1 VM's using terraform.
 
@@ -147,12 +147,12 @@ ansible-playbook -e @vars.yaml  play2.yaml
 
 ```
 
-> **HINT** You will be prompted to press the enter key during Playbook 2 execution before the script continues,
+> **NOTE:** You will be prompted to press the enter key during Playbook 2 execution before the script continues,
 > this happens so the end-user can verify the helper VM is deployed successfully.  The helper VM is deployed when the
 > helper VM console displays the login prompt.
 
 
-### Run playbook Three
+### Run playbook 3
 
 Playbook 3 will update the helper node to act as Load Balancer/ Dynamic Host
 Configuration Protocol / Preboot Execution Environment / Domain Name System
@@ -164,35 +164,35 @@ ansible-playbook -e @vars.yaml  play3.yaml
 
 ```
 
-### Should the Playbook(s) fail for some reason
+### Should the Playbook(s) fail
 If the ansible scripts fail you can execute the following script to clean up and reset the environment.
-** Please exercise caution when using either of the clean up scripts. **
+**Please exercise caution when using either of the clean up scripts.**
 
 ```
 ansible-playbook -e @vars.yaml  clean_ocp_vms.yaml
 ```
 
-> **HINT** Using ```clean_ocp_vms.yaml``` will delete all OCP related VM's.
+> **NOTE:** Using ```clean_ocp_vms.yaml``` will delete all OCP related VM's.
 > You should then be able to execute Play2 and Play3 playbooks to restart the OCP installation.
 
 ```
 ansible-playbook -e @vars.yaml  clean_everything.yaml
 ```
 
-> **HINT** Using ```clean_everything.yaml``` will delete the vCenter and all OCP related VMs.
+> **NOTE:** Using ```clean_everything.yaml``` will delete the vCenter and all OCP related VMs.
 > You should then be able to execute Play1, Play2 and Play3 playbook to resume OCP installation.
 > ** Do not use this if you vCenter installation was successful and the vCenter is running properly.
 
 ## Wait for OCP 4.2 install
 
-The boostrap VM actually does the install for you; you can track it with the following command by ssh into helper node.
+The boostrap VM actually does the install for you. You can track it by connecting to the helper node with ssh and issuing the following command:
 
 ```
 cd /opt/ocp4
 openshift-install wait-for bootstrap-complete --log-level debug
 ```
 
-Once you see this message
+Once you see this message below, you can continue.
 
 ```
 DEBUG OpenShift Installer v4.2.0
@@ -204,7 +204,7 @@ DEBUG Bootstrap status: complete
 INFO It is now safe to remove the bootstrap resources
 ```
 
-you can continue. At this point, the bootstrap server is no longer required and you can decommission it if you wish.
+At this point, the bootstrap server is no longer required and you can decommission it if you wish.
 
 ## Finish OCP Installation
 
@@ -221,7 +221,7 @@ You must configure storage for the image registry Operator.  For non-production 
 oc patch configs.imageregistry.operator.openshift.io cluster --type merge --patch '{"spec":{"storage":{"emptyDir":{}}}}'
 ```
 
-If you have a need to gain external access to the image registry or to log in to the registry from outside the cluster, run the following command to expose the registry:
+If you have require external access to the image registry or need to log in to the registry from outside the cluster, run the following command to expose the registry:
 
 ```
 oc patch configs.imageregistry.operator.openshift.io/cluster --type merge -p '{"spec":{"defaultRoute":true}}'
