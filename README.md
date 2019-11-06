@@ -1,5 +1,5 @@
-# ocpvmware
-
+Installing OCP 4.2 using VMware
+===============================
 
 For deploying OCP 4.2, a minimum recommendation is to provision 1 ESXi server
 and 1 Centos/Redhat VSI on the same VLAN in IBM Cloud for Government. For this
@@ -55,7 +55,7 @@ after the install is complete. The VSI is defined below.
 - Download vCenter ISO image from VMware. (VMware website requires an account to download the ISO image)
 
 #### Install Packages
-After the VSI is provisioned, logon to the VSI as root. To run ansible scripts, the ansible rpm and python library need to be installed:
+After the VSI is provisioned, logon to the VSI as root. To run ansible scripts, the ansible rpm and python library need to be installed. Use the following commands:
 
 ```
 sudo yum update
@@ -119,12 +119,9 @@ cd /opt/ocpvmware4.2
 
 * Edit the [hosts](./hosts) file kvmguest section to match helper node information. This should be similar to vars.yaml file
 
-
 ## Running the playbooks
 
 Running playbook 1, 2 and 3 will deploy the entire stack from vCenter to OCP v4.1. If vCenter already exist, skip playbook one and continue with playbook two.
-
-
 
 ### Run playbook 1
 
@@ -151,13 +148,11 @@ ansible-playbook -e @vars.yaml  play2.yaml
 > this happens so the end-user can verify the helper VM is deployed successfully.  The helper VM is deployed when the
 > helper VM console displays the login prompt.
 
-
 ### Run playbook 3
 
 Playbook 3 will update the helper node to act as Load Balancer/ Dynamic Host
 Configuration Protocol / Preboot Execution Environment / Domain Name System
 (LB/DHCP/PEX/DNS). This playbook will also restart the OCP VM's
-
 
 ```
 ansible-playbook -e @vars.yaml  play3.yaml
@@ -221,7 +216,7 @@ You must configure storage for the image registry Operator.  For non-production 
 oc patch configs.imageregistry.operator.openshift.io cluster --type merge --patch '{"spec":{"storage":{"emptyDir":{}}}}'
 ```
 
-If you have require external access to the image registry or need to log in to the registry from outside the cluster, run the following command to expose the registry:
+If you require external access to the image registry or need to log in to the registry from outside the cluster, run the following command to expose the registry:
 
 ```
 oc patch configs.imageregistry.operator.openshift.io/cluster --type merge -p '{"spec":{"defaultRoute":true}}'
