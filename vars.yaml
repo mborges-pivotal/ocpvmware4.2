@@ -81,8 +81,8 @@ v_rhcos_initramfs: "https://mirror.openshift.com/pub/openshift-v4/dependencies/r
 v_rhcos_install_kernel: "https://mirror.openshift.com/pub/openshift-v4/dependencies/rhcos/4.2/latest/rhcos-4.2.0-x86_64-installer-kernel"
 
 # OCP Installer
-v_ocp_client: "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux-{{openshift_build}}.tar.gz"
-v_ocp_installer: "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-install-linux-{{openshift_build}}.tar.gz"
+v_ocp_client: "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/{{openshift_build}}/openshift-client-linux-{{openshift_build}}.tar.gz"
+v_ocp_installer: "https://mirror.openshift.com/pub/openshift-v4/clients/ocp/{{openshift_build}}/openshift-install-linux-{{openshift_build}}.tar.gz"
 v_ocp_terraform: "https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linux_amd64.zip"
 
 
